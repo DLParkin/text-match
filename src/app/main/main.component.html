@@ -1,0 +1,42 @@
+<div class="main">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter string here first</mat-label>
+    <input
+      autofocus
+      matInput
+      required
+      [formControl]="text"
+      name="text"
+      [(ngModel)]="inputText"
+    />
+    <mat-error>Input is required in order to compare!</mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Enter what you are looking for, use a comma(',') for multiple word matches.</mat-label>
+    <input
+      matInput
+      required
+      [formControl]="subText"
+      name="subText"
+      [(ngModel)]="inputSubText"
+    />
+    <mat-error>Input is required in order to compare!</mat-error>
+  </mat-form-field>
+  <br />
+  <div class="submit">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+  <br />
+  <div class="spacer"></div>
+  <div *ngFor="let index of indexArray">
+    <app-results *ngIf="found" [index]="index"></app-results>
+  </div>
+</div>
